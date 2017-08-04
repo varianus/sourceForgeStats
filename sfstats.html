@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="./css/w3.css" />
+    <link type="text/css" rel="stylesheet" href="./css/sfstats.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="./js/sfstats.js"></script>
+    <title>Sourceforge download stats</title>
+</head>
+
+<body class="w3-light-grey" onload="loadDefaultData();">
+    <!-- Top container -->
+    <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+        <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+        <span class="w3-bar-item w3-right">SourceForge stats</span>
+    </div>
+
+    <!-- Sidebar/menu -->
+    <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+        <hr>
+        <div class="w3-container">
+            <h5>Dashboard</h5>
+        </div>
+        <div class="w3-bar-block">
+            <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close();" title="close menu">
+                <i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+            <a href="#" class="tablink w3-bar-item w3-button w3-padding" onclick="openStats(event, 3,'dashboard');">
+                <i class="fa fa fa-dashboard fa-fw"></i> Dashboard</a>
+            <a href="#" class="tablink w3-bar-item w3-button w3-padding" onclick="openStats(event, 0, 'byCountry', 'regions');">
+                <i class="fa fa-bullseye fa-fw"></i>  Regions</a>
+            <a href="#" class="tablink w3-bar-item w3-button w3-padding" onclick="openStats(event, 2,'byDate','dates');">
+                <i class="fa fa-calendar fa-fw"></i>  Dates</a>
+            <a href="#" class="tablink w3-bar-item w3-button w3-padding" onclick="openStats(event, 1, 'byOS', 'oses');">
+                <i class="fa fa-bell fa-fw"></i>  Operating Systems</a>
+        </div>
+    </nav>
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu"
+        id="myOverlay"></div>
+
+    <!-- !PAGE CONTENT! -->
+    <div class="w3-main" style="margin-left:300px;margin-top:43px;">
+        <!-- Header -->
+        <header class="w3-container" style="padding-top:22px">
+            <h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
+        </header>
+        <div class="w3-panel" style="height :600px; display:none;" id="spinner">
+            <h5 class="w3-large">Loading</h5>
+            <p><i class="fa fa-spinner w3-spin w3-jumbo"></i></p>
+        </div>
+        <div class="w3-panel" style="height :600px; display:none;" id="dashboard">
+            <div class="w3-row-padding w3-margin-bottom">
+                <div class="w3-quarter">
+                    <div class="w3-container w3-red w3-padding-16">
+                        <div class="w3-left"><i class="fa fa-download w3-xxxlarge"></i></div>
+                        <div class="w3-right">
+                            <h3 id='totDownloads'>0</h3>
+                        </div>
+                        <div class="w3-clear"></div>
+                        <h4>Total downloads</h4>
+                    </div>
+                </div>
+                <div class="w3-quarter">
+                    <div class="w3-container w3-blue w3-padding-16">
+                        <div class="w3-left"><i class="fa fa-globe w3-xxxlarge"></i></div>
+                        <div class="w3-right">
+                            <h3 id="totCountries">0</h3>
+                        </div>
+                        <div class="w3-clear"></div>
+                        <h4>Countries</h4>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="w3-panel" style="height :600px; display:none;" id="byCountry">
+            <h5>Regions</h5>
+            <div class="w3-container w3-row">
+                <div id="regions" class="w3-border w3-twothird"></div>
+                <div class="w3-border w3-third" style="height :500px;overflow: auto;">
+                    <table id="regionsTable" class="w3-table w3-striped w3-bordered w3-responsive">
+                        <tr>
+                            <th>Country</th>
+                            <th>Count</th>
+                        </tr>
+                        <tbody id="tabcontries">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="w3-panel" style="height :600px; display:none;" id="byDate">
+            <h5>Dates</h5>
+            <div class="w3-container">
+                <div id="dates" class="w3-border"></div>
+            </div>
+
+        </div>
+        <div class="w3-panel" style="height :600px; display:none;" id="byOS">
+            <h5>Operating Systems</h5>
+            <div class="w3-container">
+                <div id="oses" class="w3-border"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
