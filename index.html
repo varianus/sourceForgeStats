@@ -32,11 +32,11 @@
             <a href="#" class="tablink w3-bar-item w3-button w3-padding" onclick="openStats(event, 3,'dashboard');">
                 <i class="fa fa fa-dashboard fa-fw"></i> Dashboard</a>
             <a href="#" class="tablink w3-bar-item w3-button w3-padding" onclick="openStats(event, 0, 'byCountry', 'regions');">
-                <i class="fa fa-bullseye fa-fw"></i>  Regions</a>
+                <i class="fa fa-globe fa-fw"></i>  Regions</a>
             <a href="#" class="tablink w3-bar-item w3-button w3-padding" onclick="openStats(event, 2,'byDate','dates');">
                 <i class="fa fa-calendar fa-fw"></i>  Dates</a>
             <a href="#" class="tablink w3-bar-item w3-button w3-padding" onclick="openStats(event, 1, 'byOS', 'oses');">
-                <i class="fa fa-bell fa-fw"></i>  Operating Systems</a>
+                <i class="fa fa-desktop fa-fw"></i>  Operating Systems</a>
         </div>
     </nav>
     <!-- Overlay effect when opening sidebar on small screens -->
@@ -45,15 +45,14 @@
 
     <!-- !PAGE CONTENT! -->
     <div class="w3-main" style="margin-left:300px;margin-top:43px;">
-        <!-- Header -->
-        <header class="w3-container" style="padding-top:22px">
-            <h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
-        </header>
         <div class="w3-panel" style="height :600px; display:none;" id="spinner">
             <h5 class="w3-large">Loading</h5>
             <p><i class="fa fa-spinner w3-spin w3-jumbo"></i></p>
         </div>
         <div class="w3-panel" style="height :600px; display:none;" id="dashboard">
+            <header class="w3-container" style="padding-top:22px">
+                <h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
+            </header>
             <div class="w3-row-padding w3-margin-bottom">
                 <div class="w3-quarter">
                     <div class="w3-container w3-red w3-padding-16">
@@ -79,7 +78,10 @@
 
         </div>
         <div class="w3-panel" style="height :600px; display:none;" id="byCountry">
-            <h5>Regions</h5>
+            <header class="w3-container" style="padding-top:22px">
+                <h5><b><i class="fa fa-globe"></i> Regions</b></h5>
+            </header>
+
             <div class="w3-container w3-row">
                 <div id="regions" class="w3-border w3-twothird"></div>
                 <div class="w3-border w3-third" style="height :500px;overflow: auto;">
@@ -95,17 +97,21 @@
             </div>
         </div>
         <div class="w3-panel" style="height :600px; display:none;" id="byDate">
-            <h5>Dates</h5>
-            <div class="w3-container">
-                <div id="dates" class="w3-border"></div>
-            </div>
+            <header class="w3-container" style="padding-top:22px">
+                <h5><b><i class="fa fa-calendar"></i> Dates</b></h5>
+
+                <div class="w3-container">
+                    <div id="dates" class="w3-border"></div>
+                </div>
 
         </div>
         <div class="w3-panel" style="height :600px; display:none;" id="byOS">
-            <h5>Operating Systems</h5>
-            <div class="w3-container">
-                <div id="oses" class="w3-border"></div>
-            </div>
+            <header class="w3-container" style="padding-top:22px">
+                <h5><b><i class="fa fa-desktop"></i> Operating systems</b></h5>
+
+                <div class="w3-container">
+                    <div id="oses" class="w3-border"></div>
+                </div>
         </div>
     </div>
 
