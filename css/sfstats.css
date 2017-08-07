@@ -8,3 +8,4 @@ h5 {
     font-family: "Raleway", sans-serif
 }
 
+.w3-panel {min-height: calc(100vh - 43px); }

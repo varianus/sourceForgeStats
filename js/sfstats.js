@@ -57,8 +57,8 @@ function renderCountries(stats, displayObj, tableObj) {
   geochart.draw(data, options)
 }
 
-function renderDates(stats, displayObj) {
-  byId('dates').innerText = ''
+function renderDates(stats, height, displayObj) {
+  displayObj.innerText = ''
   var data = new google.visualization.DataTable()
   data.addColumn('string', 'Period')
   data.addColumn('number', 'Count')
@@ -69,6 +69,7 @@ function renderDates(stats, displayObj) {
   }
 
   var options = {
+    height: height,
     title: stats.period + ' downloads',
     hAxis: {
       title: 'Downloads',
@@ -80,9 +81,8 @@ function renderDates(stats, displayObj) {
   }
   barchart.draw(data, options)
 }
-// }
 
-function renderOSes(stats, displayObj) {
+function renderOSes(stats, height, displayObj) {
   var data = new google.visualization.DataTable()
   data.addColumn('string', 'OS')
   data.addColumn('number', 'Count')
@@ -93,11 +93,11 @@ function renderOSes(stats, displayObj) {
   }
 
   var options = {
+    height: height,
     is3D: true
   }
   piechart.draw(data, options)
 }
-// }
 
 function renderDashBoard(stats, displayObj) {
   byId('totDownloads').innerText = stats.total
@@ -146,19 +146,20 @@ function openStats(evt, index, panel, renderTarget) {
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].className = tablinks[i].className.replace(' w3-blue', '')
   }
-  byId(panel).style.height = '100%'
+  
   byId(panel).style.display = 'block'
   var control = byId(renderTarget)
-
+  graphHeight = byId(panel).offsetHeight - 113
+  
   switch (index) {
     case 0:
       renderCountries(readstats, control, byId("regionsTable"))
       break
     case 1:
-      renderOSes(readstats, control)
+      renderOSes(readstats, graphHeight, control)
       break
     case 2:
-      renderDates(readstats, control)
+      renderDates(readstats, graphHeight, control)
       break
     case 3:
       renderDashBoard(readstats)
