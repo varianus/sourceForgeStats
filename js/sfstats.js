@@ -31,8 +31,7 @@ function loadCharts() {
 }
 
 function renderCountries(stats, displayObj, tableObj) {
-  displayObj.innerHTML = ''
-
+  
   if (tableObj) {
     tableObj.innerHTML = ''
   }
@@ -58,7 +57,6 @@ function renderCountries(stats, displayObj, tableObj) {
 }
 
 function renderDates(stats, height, displayObj) {
-  displayObj.innerText = ''
   var data = new google.visualization.DataTable()
   data.addColumn('string', 'Period')
   data.addColumn('number', 'Count')
@@ -196,7 +194,7 @@ function w3_close() {
 }
 
 function reloadStats() {
-  sfData = 
+  sfData = undefined
   getStats(defaultProject, byId('startdate').value, byId('enddate').value);  
 }
 

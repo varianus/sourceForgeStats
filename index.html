@@ -37,7 +37,7 @@
                 <i class="fa fa-calendar fa-fw"></i>  Dates</a>
             <a href="#" class="tablink w3-bar-item w3-button w3-padding" onclick="openStats(event, 1, 'byOS', 'oses');">
                 <i class="fa fa-desktop fa-fw"></i>  Operating Systems</a>
-            <a href="#" class="tablink w3-bar-item w3-button w3-padding" onclick="document.getElementById('config').style.display='block'">
+            <a href="#" class="tablink w3-bar-item w3-button w3-padding" onclick="byId('config').style.display='block'">
                 <i class="fa fa-gear fa-fw"></i>  Change period</a>
 
         </div>
@@ -48,7 +48,7 @@
 
     <div id="config" class="w3-modal">
         <div class="w3-modal-content w3-card-4 w3-animate-zoom">
-            <div onclick="document.getElementById('config').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright"
+            <div onclick="byId('config').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright"
                 title="Close">&times;</div>
             <div class="w3-container w3-row">
                 <div class="w3-section w3-half  w3-margin-top">
@@ -59,7 +59,7 @@
                     <label><b>End Date</b></label>
                     <input class="w3-input w3-border" type="date" placeholder="End Date" id="enddate" required>
                 </div>
-                <button class="w3-button w3-block w3-green w3-section w3-padding" onclick="reloadStats();">Update</button>
+                <button class="w3-button w3-block w3-green w3-section w3-padding" onclick="reloadStats();byId('config').style.display='none';">Update</button>
 
             </div>
         </div>
