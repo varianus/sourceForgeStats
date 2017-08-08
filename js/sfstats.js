@@ -172,20 +172,8 @@ function openStats(evt, index, panel, renderTarget) {
   return false
 }
 
-function loadDefaultData() {
-  loadCharts()
-  var currDate = new Date()
-  end_date = currDate.toISOString().substring(0, 10);
-  currDate.setDate(currDate.getDate() - daysToAnalyze);
-  start_date = currDate.toISOString().substring(0, 10);
-  getStats(defaultProject, start_date, end_date);
-}
-
 // Get the Sidebar
-
 // Get the DIV with overlay effect
-
-
 // Toggle between showing and hiding the sidebar, and add overlay effect
 function w3_open() {
   var mySidebar = byId("mySidebar");  
@@ -206,3 +194,20 @@ function w3_close() {
   mySidebar.style.display = "none";
   overlayBg.style.display = "none";
 }
+
+function reloadStats() {
+  sfData = 
+  getStats(defaultProject, byId('startdate').value, byId('enddate').value);  
+}
+
+function loadDefaultData() {
+  loadCharts()
+  var currDate = new Date()
+  end_date = currDate.toISOString().substring(0, 10);
+  currDate.setDate(currDate.getDate() - daysToAnalyze);
+  start_date = currDate.toISOString().substring(0, 10);
+  byId('startdate').value = start_date
+  byId('enddate').value = end_date  
+  getStats(defaultProject, start_date, end_date);
+}
+
