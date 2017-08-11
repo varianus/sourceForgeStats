@@ -1,6 +1,8 @@
 // default project name
 var defaultProject = "ovoplayer"
 var daysToAnalyze = 30
+var GMapsKey = ''
+
 //
 var sfData
 
@@ -19,7 +21,7 @@ function loadCharts() {
     'packages': ['geochart', 'corechart', 'bar'],
     // Note: you will need to get a mapsApiKey for your project.
     // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-    'mapsApiKey': 'AIzaSyD7m3Jfs0KUQSKcXSx5xzTVjnMTm4xqKJ0'
+    'mapsApiKey': GMapsKey
   })
   google.charts.setOnLoadCallback(drawDates)
 
@@ -31,7 +33,7 @@ function loadCharts() {
 }
 
 function renderCountries(stats, displayObj, tableObj) {
-  
+
   if (tableObj) {
     tableObj.innerHTML = ''
   }
@@ -104,20 +106,20 @@ function renderDashBoard(stats, displayObj) {
 
 function downloadStats(url, onDoneStats) {
   fetch(url)
-    .then(function (response) {
+    .then(function(response) {
       if (!response.ok) {
         messagefield.innerText = response.statusText
       }
       return response.json()
     })
-    .then(function (data) {
+    .then(function(data) {
       readstats = data
       if (onDoneStats) {
         onDoneStats()
       }
       return ''
     })
-    .catch(function () {
+    .catch(function() {
       return 'Error while fetching stats'
     })
 }
@@ -127,7 +129,7 @@ function getStats(project, start_date, end_date) {
   url = printf('https://sourceforge.net/projects/%%/files/stats/json?start_date=%%&end_date=%%',
     project, start_date, end_date)
 
-  downloadStats(url, function () {
+  downloadStats(url, function() {
     openStats(null, 3, 'dashboard');
   })
   return false
@@ -144,11 +146,11 @@ function openStats(evt, index, panel, renderTarget) {
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].className = tablinks[i].className.replace(' w3-blue', '')
   }
-  
+
   byId(panel).style.display = 'block'
   var control = byId(renderTarget)
   graphHeight = byId(panel).offsetHeight - 113
-  
+
   switch (index) {
     case 0:
       renderCountries(readstats, control, byId("regionsTable"))
@@ -174,7 +176,7 @@ function openStats(evt, index, panel, renderTarget) {
 // Get the DIV with overlay effect
 // Toggle between showing and hiding the sidebar, and add overlay effect
 function w3_open() {
-  var mySidebar = byId("mySidebar");  
+  var mySidebar = byId("mySidebar");
   var overlayBg = byId("myOverlay");
   if (mySidebar.style.display === 'block') {
     mySidebar.style.display = 'none';
@@ -187,7 +189,7 @@ function w3_open() {
 
 // Close the sidebar with the close button
 function w3_close() {
-  var mySidebar = byId("mySidebar");  
+  var mySidebar = byId("mySidebar");
   var overlayBg = byId("myOverlay");
   mySidebar.style.display = "none";
   overlayBg.style.display = "none";
@@ -195,7 +197,7 @@ function w3_close() {
 
 function reloadStats() {
   sfData = undefined
-  getStats(defaultProject, byId('startdate').value, byId('enddate').value);  
+  getStats(defaultProject, byId('startdate').value, byId('enddate').value);
 }
 
 function loadDefaultData() {
@@ -205,7 +207,6 @@ function loadDefaultData() {
   currDate.setDate(currDate.getDate() - daysToAnalyze);
   start_date = currDate.toISOString().substring(0, 10);
   byId('startdate').value = start_date
-  byId('enddate').value = end_date  
+  byId('enddate').value = end_date
   getStats(defaultProject, start_date, end_date);
 }
-
